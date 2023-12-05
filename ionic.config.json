@@ -1,0 +1,7 @@
+{
+  "name": "fitmantra",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
