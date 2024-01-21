@@ -1,17 +1,110 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12" style="margin-bottom: 70px;">
+      <br />
+      <div class="card">
+        <h4 style="font-weight: bold; text-align: center; font-size: 28px;" class="card-header center text-primary">FitMantra BOT</h4>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="frame-box">
+                <div *ngFor="let item of chatConversation">
+                  <p class="card-text padding" [ngClass]="item.cssClass">
+                    {{item.person}} : {{getText(item.response)}}
+                  </p>
+                </div>
+                <div>
+                  <img
+                    src="../../assets/img/ZNeT.gif"
+                    *ngIf="showSpinner"
+                    width="50px"
+                    height="50px"
+                  />
+                </div>
+              </div>
+              <br />
+              <ion-textarea
+                style="width: 100%; border: 1px solid; padding: 5px"
+                row="3"
+                cols="15"
+                class="form-control"
+                [(ngModel)]="promptText"
+                placeholder="Start by asking what you are looking for"
+              ></ion-textarea>
+              <br />
+              <ion-button
+                class="btn btn-primary push-right"
+                (click)="checkResponse()"
+              >
+                Send
+              </ion-button>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content style="--background:white;">
+  <ion-row style="margin-top: 0px; background-color: white;">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: black; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon
+          style="color: black"
+          routerLink="/tabs/tab1"
+          name="home-outline"
+        ></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <img *ngIf="!promptText" src="../../assets/img/cb.png" />
+  <ion-card *ngIf="promptText" style="padding: 20px">
+    <div *ngFor="let item of chatConversation">
+      <p class="card-text padding" [ngClass]="item.cssClass">
+        {{item.person}} : {{getText(item.response)}}
+      </p>
+    </div>
+    <div>
+      <img
+        src="../../assets/img/ZNeT.gif"
+        *ngIf="showSpinner"
+        width="50px"
+        height="50px"
+      />
+    </div>
+  </ion-card>
+
+  <div *ngIf="!chatConversation">Hello</div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar style="color: black" color="light">
+    <ion-textarea
+      [(ngModel)]="promptText"
+      autoGrow
+      rows="1"
+      placeholder="What you are looking for"
+      class="ion-text-center"
+    >
+    </ion-textarea>
+    <ion-buttons slot="end">
+      <ion-fab-button (click)="checkResponse()" size="small" color="primary">
+        <ion-icon style="font-size: 20px" name="send"></ion-icon>
+      </ion-fab-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

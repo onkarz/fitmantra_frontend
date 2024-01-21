@@ -1,0 +1,94 @@
+<ion-content [fullscreen]="true">
+  <swiper-container #swiper style="color: white;"
+   (afterinit)="swiperReady()"
+  (slidechange)="swiperSlideChanged($event)"
+  [loop]="true"
+  [pagination]="true">
+    <swiper-slide class="ion-padding">
+      <img style="padding: 0px; width: 400px" src="assets/img/007.png" />
+
+      <div class="slider-text">
+        <h2 style="font-family: Poppins; font-weight: bold">
+          Virtual Gym Trainer
+        </h2>
+
+        <p style="line-height: 40px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+          ultricies, erat vitae porta consequat.
+        </p>
+      </div>
+
+      <div style="margin-top: 80px; margin-bottom: 20px;" class="navigator">
+        <ion-button
+          style="
+            --background: #925eff;
+            color: black;
+            --border-radius: 30px !important;
+            width: 150px;
+            --max-height: 30px !important;
+          "
+          (click)="skip()"
+          >SKIP</ion-button
+        >
+
+      </div>
+    </swiper-slide>
+    <swiper-slide class="ion-padding">
+      <img style="padding: 0px; width: 400px" src="assets/img/002.png" />
+
+      <div class="slider-text">
+        <h2 style="font-family: Poppins; font-weight: bold">
+          Progress Tracker
+        </h2>
+
+        <p style="line-height: 40px">
+          Keep a track of your progress to help to hit your goals in the most
+          efficient way
+        </p>
+      </div>
+
+      <div  class="navigator">
+        <ion-button
+          style="
+            --background: #925eff;
+            color: black;
+            --border-radius: 30px !important;
+            width: 150px;
+            --max-height: 30px !important;
+            margin-top: 100px;
+          "
+          (click)="skip()"
+          >SKIP</ion-button
+        >
+
+      </div>
+    </swiper-slide>
+
+    <swiper-slide class="ion-padding">
+      <img style="padding: 0px; width: 400px" src="assets/img/009.png" />
+
+      <div class="slider-text">
+        <h2 style="font-family: Poppins; font-weight: bold">Social Media</h2>
+
+        <p style="line-height: 40px">
+          Share your achievements and progress with the gym community
+        </p>
+      </div>
+
+      <div style="margin-top: 100px; margin-bottom: 20px;" class="navigator">
+
+        <ion-button routerLink="/login"
+          style="
+            --background: #925eff;
+            color: black;
+            --border-radius: 30px !important;
+            width: 150px;
+            --max-height: 30px !important;
+          "
+          (click)="skip()"
+          >Next</ion-button
+        >
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</ion-content>

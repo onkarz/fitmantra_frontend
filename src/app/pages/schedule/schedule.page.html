@@ -1,0 +1,45 @@
+<ion-content style="--background: black; color: white" [fullscreen]="true">
+  <ion-row style="margin-top: 0px; background-color: black">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: white; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon
+          style="color: white"
+          routerLink="/tabs/tab1"
+          name="home-outline"
+        ></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <h4 style="font-weight: bold; text-align: center; color: white">
+        Your Day Wise Workout Report
+      </h4>
+    </ion-col>
+  </ion-row>
+  <ion-card
+    style="
+      padding: 15px;
+      background: black;
+      color: white;
+      border: 1px solid gray;
+    "
+    *ngFor="let report of dayWiseReport"
+  >
+    <h4 style="font-weight: bold;">Level - {{ report.level }}</h4>
+    <p style="font-weight: bold">{{report.title}}</p>
+
+    <p>{{report.description}}</p>
+  </ion-card>
+</ion-content>

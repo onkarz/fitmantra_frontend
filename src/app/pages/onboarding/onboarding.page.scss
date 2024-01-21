@@ -1,0 +1,25 @@
+swiper-slide {
+  display: block;
+}
+
+swiper-slide img {
+  padding: 15%;
+}
+
+.slider-text {
+  //padding-top: 20%;
+}
+
+.slider-text h2 {
+  font-family: 'SF UI Display Semibold';
+}
+
+.navigator {
+
+
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}

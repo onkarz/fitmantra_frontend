@@ -1,0 +1,85 @@
+<ion-content style="--background: black; color: white" [fullscreen]="true">
+  <ion-row style="margin-top: 0px; background-color: black">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: white; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon
+          style="color: white"
+          routerLink="/tabs/tab1"
+          name="home-outline"
+        ></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+  <form [formGroup]="createPostForm">
+    <div class="form-box" style="margin-top: 80px; color: white; text-align: center;">
+   
+      <div class="header-text">Create Post</div>
+
+      <!-- <img
+      src="https://w0.peakpx.com/wallpaper/734/397/HD-wallpaper-minimalist-bodybuild-body-bodybuilding-motivation-simple.jpg"
+      style="
+        height: 300px;
+        width: 100%;
+        border-radius: 15px;
+        object-fit: cover;
+        margin-bottom: 10px;
+      "
+    /> -->
+
+      <ion-button
+        style="
+          margin-top: 40%;
+          --background: #5e1914;
+          font-weight: bold;
+          --color: white !important;
+        "
+        *ngIf="!img"
+        name="image"
+        ngDefaultControl
+        (click)="getPic()"
+      >
+        Add Photo
+      </ion-button>
+
+      <ion-icon
+        (click)="removeImage()"
+        *ngIf="img"
+        class="fa"
+        name="close"
+      ></ion-icon>
+
+      <img
+        *ngIf="img"
+        style="height: 300px; width: auto; padding: 20px"
+        [src]="img?.webPath"
+      />
+
+      <ion-input
+        style="border: 1px solid white; margin-top: 20px;"
+        [(ngModel)]="title"
+        formControlName="title"
+        placeholder="Title"
+        type="text"
+      />
+      <ion-textarea
+        [(ngModel)]="description"
+        formControlName="description"
+        style="border: 1px solid white; margin-top: 10px"
+        placeholder="Caption for post"
+        type="text"
+      ></ion-textarea>
+
+      <button (click)="post()">Submit</button>
+    </div>
+  </form>
+</ion-content>

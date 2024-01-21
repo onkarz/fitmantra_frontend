@@ -1,0 +1,84 @@
+<ion-content style="--background: black">
+  <div class="heading">
+    <span style="color: white; font-family: nova flat"
+      >Fit<span style="color: #ff7008">Forma</span></span
+    >
+  </div>
+  <body>
+    <form [formGroup]="registerForm">
+    <div class="form">
+      <h2>Register</h2>
+      <div class="input">
+
+        <!-- <div class="container" style="text-align: center">
+          <ion-button
+            style="
+
+              --background: #5e1914;
+              font-weight: bold;
+              --color: white !important;
+            "
+            *ngIf="!photo"
+            name="image"
+            ngDefaultControl
+            (click)="presentAlert()"
+          >
+            Add Photo
+          </ion-button>
+
+          <ion-icon
+            (click)="removeImage()"
+            *ngIf="photo"
+            class="fa"
+            name="close"
+          ></ion-icon>
+
+          <img
+            *ngIf="photo"
+            style="height: 200px; width: auto; padding: 20px"
+            [src]="photo"
+          />
+        </div> -->
+
+        <div class="inputBox">
+          <label for="">FirstName</label>
+          <input   [(ngModel)]="firstName"
+          formControlName="firstName" type="text" />
+        </div>
+        <div class="inputBox">
+          <label for="">LastName</label>
+          <input   [(ngModel)]="lastName"
+          formControlName="lastName" type="text" />
+        </div>
+        <div class="inputBox">
+          <label for="">Email</label>
+          <input  [(ngModel)]="email"
+          formControlName="email" type="email" />
+        </div>
+        <div class="inputBox">
+          <label for="">Password</label>
+          <input  [(ngModel)]="password"
+          formControlName="password" type="password" />
+        </div>
+        <div class="inputBox">
+          <label for="">Confirm Password</label>
+          <input  [(ngModel)]="confirmPassword"
+          formControlName="confirmPassword" type="password" />
+        </div>
+        <div (click)="userSignUp()" class="inputBox">
+          <input type="submit" name="" value="Register" />
+        </div>
+      </div>
+      <!-- <p class="forgot">Forgot Password? <a href="#">Click Here</a></p> -->
+      <div class="social">
+        <button
+          routerLink="/login"
+          style="text-align: center; padding: 5px 15px 7px 10px"
+        >
+          <p>Sign In</p>
+        </button>
+      </div>
+    </div>
+  </form>
+  </body>
+</ion-content>

@@ -1,17 +1,222 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- <ion-content [fullscreen]="true">
+  <ion-content style="--background: black" [fullscreen]="true">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div>
+            <div class="heading">
+              <span style="color: white; font-family: nova flat"
+                >Fit<span style="color: #ff7008">Forma</span></span
+              >
+            </div>
+          </div>
+        </ion-col>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+        <ion-col>
+          <div style="text-align: right; padding: 20px; font-size: 30px">
+            <ion-icon name="mail-open-outline"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <div>
+      <ion-grid>
+        <ion-row style="margin-top: 10px; border-bottom: 1px solid gray">
+          <ion-col size="4">
+            <div style="text-align: center">
+              <img
+                style="height: 80px; width: 80px; border-radius: 50%"
+                src="assets/img/001.png"
+              />
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-row>
+              <ion-col>
+                <div
+                  style="
+                    font-size: 20px;
+                    color: white;
+                    font-weight: bold;
+                    text-align: center;
+                    margin-top: -20px;
+                  "
+                >
+                  <p>Pratik_Arawat</p>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row style="margin-top: -10px">
+              <ion-col style="text-align: center">1M<br />Followers</ion-col>
+              <ion-col style="text-align: center">298K<br />Following</ion-col>
+              <ion-col style="text-align: center">123<br />Posts</ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid>
+        <ion-row style="border-bottom: 1px solid gray">
+          <ion-col>
+            <div style="text-align: left; margin-bottom: 15px">
+              <ion-icon
+                style="font-size: 30px; font-weight: bold"
+                name="trophy-outline"
+              ></ion-icon>
+
+              <span style="font-size: 22px; margin-left: 20px">Gym Goals</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row style="border-bottom: 1px solid gray">
+          <ion-col>
+            <div style="text-align: left; margin-bottom: 15px">
+              <ion-icon
+                style="font-size: 30px; font-weight: bold"
+                name="golf-outline"
+              ></ion-icon>
+              <span style="font-size: 22px; margin-left: 20px"
+                >Achievements</span
+              >
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row style="border-bottom: 1px solid gray">
+          <ion-col>
+            <div style="text-align: left; margin-bottom: 15px">
+              <ion-icon
+                style="font-size: 30px; font-weight: bold"
+                name="hourglass-outline"
+              ></ion-icon>
+              <span style="font-size: 22px; margin-left: 20px">Reminders</span>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row style="border-bottom: 1px solid gray">
+          <ion-col>
+            <div style="text-align: left; margin-bottom: 15px">
+              <ion-icon
+                style="font-size: 30px; font-weight: bold"
+                name="golf-outline"
+              ></ion-icon>
+              <span style="font-size: 24px; margin-left: 20px">Credits</span>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-fab style="margin-left: 42%;" slot="fixed" horizontal="center" vertical="bottom">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <br>
+      <ion-label>Add Post</ion-label>
+    </ion-fab>
+  </ion-content>
+</ion-content> -->
+<ion-content style="--background: black;" [fullscreen]="true">
+
+  <section style="color: white;" *ngIf="userData" class="main">
+    <div class="profile-card">
+      <!-- <div class="image">
+        <img src="assets/img/profile.jpg" alt="" class="profile-pic" />
+      </div> -->
+      <div class="data">
+        <h2>{{firstName}} {{lastName}}</h2>
+        <span>{{email}}</span>
+      </div>
+      <div class="row">
+        <div class="info">
+          <h3>Achievements</h3>
+          <span>120</span>
+        </div>
+        <div class="info">
+          <h3>Credits</h3>
+          <span>5000</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="info">
+          <h3>Posts</h3>
+          <span>15</span>
+        </div>
+
+      </div>
+      <div class="buttons">
+        <a routerLink="/createpost" class="btn">Create Post</a>
+        <a (click)="logout()" class="btn">Log Out</a>
+      </div>
+    </div>
+  </section>
+
+  <section
+    style="display: block;text-align: -webkit-center; margin-bottom: 30px; color: white;"
+    class="main"
+  >
+    <div style="padding: 10px" class="profile-card">
+      <ion-grid>
+        <ion-row>
+          <div (click)="gymGoals()">
+            <ion-icon
+              style="font-size: 18px; font-weight: bold"
+              name="trophy-outline"
+            ></ion-icon>
+
+            <span style="font-size: 18px; margin-left: 20px">Gym Goals</span>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div style="padding: 10px; margin-top: 10px" class="profile-card">
+      <ion-grid>
+        <ion-row>
+          <div (click)="achievements()">
+            <ion-icon
+              style="font-size: 18px; font-weight: bold"
+              name="golf-outline"
+            ></ion-icon>
+
+            <span style="font-size: 18px; margin-left: 20px">Achievements</span>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div style="padding: 10px; margin-top: 10px" class="profile-card">
+      <ion-grid>
+        <ion-row>
+          <div (click)="reminders()">
+            <ion-icon
+              style="font-size: 18px; font-weight: bold"
+              name="hourglass-outline"
+            ></ion-icon>
+
+            <span style="font-size: 18px; margin-left: 20px">Reminders</span>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div style="padding: 10px; margin-top: 10px" class="profile-card">
+      <ion-grid>
+        <ion-row>
+          <div (click)="credits()">
+            <ion-icon
+              style="font-size: 18px; font-weight: bold"
+              name="golf-outline"
+            ></ion-icon>
+
+            <span style="font-size: 18px; margin-left: 20px">Credits</span>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </section>
+
+  <ion-refresher  (ionRefresh)="handleRefresh($event)"  slot="fixed">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 </ion-content>

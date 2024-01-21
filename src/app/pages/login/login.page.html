@@ -1,0 +1,40 @@
+<ion-content style="--background: black">
+  <div class="heading">
+    <span style="color: white; font-family: nova flat"
+      >Fit<span style="color: #ff7008">Forma</span></span
+    >
+  </div>
+  <body>
+    <form [formGroup]="loginForm">
+      <div class="form">
+        <h2>Login</h2>
+        <div class="input">
+          <div class="inputBox">
+            <label for="">Email</label>
+            <input [(ngModel)]="email" formControlName="email" type="email" />
+          </div>
+          <div class="inputBox">
+            <label for="">Password</label>
+            <input
+              [(ngModel)]="password"
+              formControlName="password"
+              type="password"
+            />
+          </div>
+          <div (click)="userSignIn()" class="inputBox">
+            <input style="margin-bottom: 20px !important;" type="submit" name="" value="Login" />
+          </div>
+        </div>
+        <!-- <p class="forgot">Forgot Password? <a href="#">Click Here</a></p> -->
+        <div class="social">
+          <button
+            routerLink="/register"
+            style="text-align: center; padding: 5px 15px 7px 10px"
+          >
+            <p>Sign Up</p>
+          </button>
+        </div>
+      </div>
+    </form>
+  </body>
+</ion-content>

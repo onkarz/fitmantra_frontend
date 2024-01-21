@@ -1,0 +1,82 @@
+<ion-content style="--background: black" [fullscreen]="true">
+  <ion-row style="margin-top: 0px; background-color: black">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: white; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon
+          style="color: white"
+          routerLink="/tabs/tab1"
+          name="home-outline"
+        ></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+<div >
+
+
+  <div style="color: white;" class="nft"  *ngFor="let post of allPosts">
+    <div class="main">
+      <div  class="creator" style="margin-bottom: 20px">
+        <div class="wrapper">
+        Author -
+        </div>
+        <p>
+          {{post.authorName}}
+        </p>
+      </div>
+      <img
+        class="tokenImage"
+        [src]="post.postImage"
+        alt="NFT"
+      />
+
+      <div
+        style="
+          display: flex;
+          font-size: 24px;
+          justify-content: space-between;
+          padding: 15px;
+        "
+      >
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <ion-icon name="send-outline"></ion-icon>
+        <ion-icon name="bookmark-outline"></ion-icon>
+      </div>
+      <h5>{{post.title}}</h5>
+      <p class="description">{{post.description}}</p>
+      <div class="tokenInfo">
+        <div class="price">
+          <ins>◘</ins>
+          <p>{{post.authorEmail}}</p>
+        </div>
+        <div class="duration">
+          <ins>◷</ins>
+          <p>{{post.updatedAt}}</p>
+        </div>
+      </div>
+      <hr />
+      <!-- <div class="creator">
+        <div class="wrapper">
+          <img
+            src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+            alt="Creator"
+          />
+        </div>
+        <p>Username</p>
+      </div> -->
+    </div>
+  </div>
+</div>
+</ion-content>

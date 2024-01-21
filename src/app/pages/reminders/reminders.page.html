@@ -1,0 +1,132 @@
+<ion-content style="--background: black" [fullscreen]="true">
+  <ion-row style="margin-top: 0px">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: white; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon style="color: white" routerLink="/tabs/tab1" name="home-outline"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-grid>
+    <ion-row style="margin-top: 0px">
+      <ion-col>
+        <div>
+          <div class="heading">
+            <span style="color: white; font-family: nova flat"
+              >Fit<span style="color: #ff7008">Forma</span></span
+            >
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div style="text-align: right; padding: 20px; font-size: 30px">
+          <ion-icon routerLink="/tabs/tab1" name="home-outline"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: -20px">
+      <ion-col>
+        <div style="margin-top: 10px" class="heading">
+          <span style="color: white; font-family: nova flat; margin-top: 10px"
+            >Reminders</span
+          >
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div style="text-align: right; padding: 20px">
+          <img style="height: 55px; width: auto" src="assets/img/r.png" />
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <ion-grid>
+    <ion-row style="margin-top: -20px">
+      <ion-col>
+        <div style="margin-top: 10px" class="heading">
+          <span style="color: white; font-family: nova flat; margin-top: 10px"
+            >Reminders</span
+          >
+        </div>
+      </ion-col>
+
+      <ion-col>
+        <div style="text-align: right; padding: 20px">
+          <img
+            style="height: 45px; width: auto; margin-top: 5px"
+            src="assets/img/r.png"
+          />
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div style="text-align: center">
+    <img style="height: 100%; width: 65%" src="assets/img/bell.gif" />
+  </div>
+
+  <div style="text-align: center">
+    <p>Get notified its your gym time...</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px">
+    <h5 style="font-weight: bold; color: #08ffc4">Set your daily gym time</h5>
+  </div>
+
+  <ion-grid style="padding: 12px; padding-top: 0">
+    <ion-row>
+      <ion-col>
+        <div>
+          <ion-input
+            style="
+              background: white;
+              border-radius: 50px;
+              color: black;
+              font-weight: bold;
+              text-align: center;
+            "
+            placeholder="Hour"
+          ></ion-input>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <ion-input
+            style="
+              background: white;
+              border-radius: 50px;
+              color: black;
+              font-weight: bold;
+              text-align: center;
+            "
+            placeholder="Minutes"
+          ></ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer style="text-align: center">
+  <ion-button
+    style="
+      color: white;
+      --background: #925eff;
+      width: 180px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      border-radius: 20px;
+    "
+    >Schedule
+  </ion-button>
+</ion-footer>

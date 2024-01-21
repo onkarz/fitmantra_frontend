@@ -1,0 +1,51 @@
+
+
+.push-right {
+  margin-left: 78%;
+}
+
+.person {
+  font-style: italic;
+  font-weight: bold;
+  color: purple;
+}
+
+.bot {
+  font-weight: bold;
+  color: darkgreen;
+}
+
+.frame-box{
+  border: solid 2px orange; padding: 20px;
+  min-height: 400px;
+  max-height: 400px;
+  overflow-y: scroll;
+  border-radius: 15px;
+}
+
+
+.padding{
+  padding: 5px;
+}
+
+
+ion-row{
+ // margin-top: 20px;
+}
+
+
+.heading {
+  padding: 20px;
+  font-size: 30px;
+  text-align: left;
+}
+
+
+ion-toolbar {
+  padding: 0 3px;
+  ion-textarea {
+      border: 1px solid var(--ion-color-medium);
+      border-radius: 20px;
+      margin: 0.5vh 0;
+  }
+}

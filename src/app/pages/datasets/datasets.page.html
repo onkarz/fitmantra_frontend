@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Dataset</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="dataSetDetails" style="padding: 10px" [fullscreen]="true">
+  <h4 style="text-align: center">Insert your credentials</h4>
+
+  <ion-item>
+    <ion-label stacked>Title</ion-label>
+    <ion-input [(ngModel)]="dataSetDetails.dataSet.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Description</ion-label>
+    <ion-textarea
+      type="text"
+      [(ngModel)]="dataSetDetails.dataSet.description"
+    ></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Email</ion-label>
+    <ion-input
+      type="email"
+      [(ngModel)]="dataSetDetails.dataSet.userEmail"
+    ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-select [(ngModel)]="dataSetDetails.dataSet.level" label="Select level">
+      <ion-select-option value="beginner"> Beginner</ion-select-option>
+      <ion-select-option value="intermediate">Intermediate</ion-select-option>
+      <ion-select-option value="advanced">Advanced</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Property Checked</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="dataSetDetails.dataSet.checked"
+    ></ion-input>
+  </ion-item>
+
+  <div style="text-align: center; margin-top: 10px">
+    <ion-button ion-button margin-right (click)="update()">
+      Update
+    </ion-button>
+  </div>
+
+  <!-- <div style="text-align: center; margin-top: 10px">
+    <ion-button ion-button margin-right (click)="refresh()">
+      Refresh
+    </ion-button>
+  </div> -->
+
+  <!-- <div style="margin-top: 20px; overflow: scroll;">
+    <ion-list>
+      <ion-item *ngFor="let data of allDataSets">
+        <ion-label>
+          <h3>{{data.title}}</h3>
+          <p>{{data.description}}</p>
+          <p>{{data.level}}</p>
+          <p>{{data.userEmail}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div> -->
+</ion-content>
