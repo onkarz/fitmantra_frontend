@@ -23,6 +23,9 @@ export class GymgoalsPage implements OnInit {
   filteredLevels: any;
   selectedLevel: any;
   isdataSetChecked: boolean = false;
+  collection: any;
+  singleDayWiseWorkout: any;
+  myTillWorkOut: any = [];
 
   constructor(private fmService: FitmantraService, public router: Router) {
     setInterval(() => {
@@ -49,6 +52,7 @@ export class GymgoalsPage implements OnInit {
 
   ngOnInit() {
     this.getAllDataSets();
+    this.getDataSetsByItsUserID();
     // this.loadPreferences();
   }
 
@@ -76,17 +80,49 @@ export class GymgoalsPage implements OnInit {
 
     console.log(DWModel);
 
-    localStorage.setItem('daywise', JSON.stringify(this.selectedValues));
+    // localStorage.setItem('daywise', JSON.stringify(this.selectedValues));
 
-    this.router.navigate(["/schedule"]);
+    // this.router.navigate(["/schedule"]);
 
-    // this.fmService.postDayWiseWorkout(DWModel).subscribe((res:any) => {
-    //   console.log(res);
-    // });
+    this.fmService.postDayWiseWorkout(DWModel).subscribe((res: any) => {
+      console.log(res);
+    });
 
     // this.savePreferences();
   }
 
+  getDataSetsByItsUserID() {
+    this.fmService.getDataSetByUserID(this.userId).subscribe((data: any) => {
+      console.log(data.dayWise);
+
+      data.dayWise.map((data: any) => {
+        this.collection = data.dayWiseWorkout;
+        this.collection.map((data: any[]) => {
+          this.singleDayWiseWorkout = data;
+          console.log(this.singleDayWiseWorkout);
+          this.fmService
+            .getDataSetByID(this.singleDayWiseWorkout)
+            .subscribe((data: any) => {
+              console.log(data);
+
+              this.myTillWorkOut.push(data.dataSet);
+              console.log(this.myTillWorkOut);
+            });
+        });
+      });
+      // let dayWiseReport = data.dayWise.dayWiseWorkout.map((data: any) => {
+      //   return data;
+      // });
+
+      // console.log(dayWiseReport);
+    });
+  }
+
+  // getDataSetsById(){
+  //   this.fmService.getDataSetByUserID(this.userId).subscribe((data:any)=>{
+  //     console.log(data);
+  //   })
+  // }
 
   likeBlog(id: any) {
     console.log(id);
@@ -97,35 +133,33 @@ export class GymgoalsPage implements OnInit {
     };
 
     if (!this.isdataSetChecked) {
-      this.fmService
-        .postDayWiseWorkout(DWModel)
-        .subscribe((res: any) => {
-          console.log('Checked', res);
-          this.isdataSetChecked = true;
-          let dayWise = this.allDataSets.map((data: any) => {
-            if (data._id == id) {
-              data = res.dataSet;
-            }
-            return data;
-          });
-          console.log('DayWise Workout', dayWise);
-          this.allDataSets = dayWise;
+      this.fmService.postDayWiseWorkout(DWModel).subscribe((res: any) => {
+        console.log('Checked', res);
+        this.isdataSetChecked = true;
+        let dayWise = this.allDataSets.map((data: any) => {
+          if (data._id == id) {
+            data = res.dataSet;
+            console.log(data);
+          }
+          return data;
         });
+        console.log('DayWise Workout', dayWise);
+        this.allDataSets = dayWise;
+      });
     } else {
-      this.fmService
-        .postDayWiseWorkout(DWModel)
-        .subscribe((res: any) => {
-          console.log('UnChecked', res);
-          this.isdataSetChecked = false;
-          let dayWise = this.allDataSets.map((data: any) => {
-            if (data._id == id) {
-              data = res.dataSet;
-            }
-            return data;
-          });
-          console.log('Blogs', dayWise);
-          this.allDataSets = dayWise;
+      this.fmService.postDayWiseWorkout(DWModel).subscribe((res: any) => {
+        console.log('UnChecked', res);
+        this.isdataSetChecked = false;
+        let dayWise = this.allDataSets.map((data: any) => {
+          if (data._id == id) {
+            data = res.dataSet;
+            console.log(data);
+          }
+          return data;
         });
+        console.log('Blogs', dayWise);
+        this.allDataSets = dayWise;
+      });
     }
   }
 

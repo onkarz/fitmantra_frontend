@@ -82,6 +82,10 @@ const routes: Routes = [
     path: 'schedule',
     loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
   },
+  {
+    path: 'tfmodel',
+    loadChildren: () => import('./pages/tfmodel/tfmodel.module').then( m => m.TfmodelPageModule)
+  },
 ];
 @NgModule({
   imports: [

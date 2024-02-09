@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>tfmodel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button
+    style="
+      margin-top: 40%;
+      --background: #5e1914;
+      font-weight: bold;
+      --color: white !important;
+    "
+    *ngIf="!img"
+    name="image"
+    ngDefaultControl
+    (click)="getPic()"
+  >
+    Add Photo
+  </ion-button>
+
+  <ion-button (click)="detectObjects()" *ngIf="img">Detect Objects</ion-button>
+
+  <ion-icon
+    (click)="removeImage()"
+    *ngIf="img"
+    class="fa"
+    name="close"
+  ></ion-icon>
+
+  <img width="300" height="300" *ngIf="img" [src]="img?.webPath" />
+</ion-content>

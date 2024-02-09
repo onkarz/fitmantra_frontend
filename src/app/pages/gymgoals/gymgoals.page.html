@@ -21,7 +21,7 @@
 </ion-row>
 <ion-row style="background-color: black">
   <ion-col>
-    <div style="color: white; padding: 10px;">
+    <div style="color: white; padding: 10px">
       <ion-select
         (ionChange)="filterByLevel($event)"
         label="Select Level"
@@ -115,9 +115,9 @@
             <ion-col>
               <div>
                 <ion-label style="color: white">
-                  <h3 style="color: white">{{data.title}}</h3>
+                  <h3 style="color: white">Title - {{data.title}}</h3>
                   <p style="color: white; text-wrap: wrap">
-                    {{data.description}}
+                    Description - {{data.description}}
                   </p>
                   <p style="color: white">{{data.level}}</p>
                 </ion-label>
@@ -130,6 +130,14 @@
       </ion-item>
     </ion-list>
   </div>
+
+
+  <ion-list style="color: black;">
+    <p>hey</p>
+    <ion-item *ngFor="let item of myTillWorkOut">
+      <ion-label style="color: black;"> {{item.title}} </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
 <ion-footer style="text-align: center; background: black">
   <ion-button
@@ -144,6 +152,7 @@
     "
     >Schedule
   </ion-button>
+
 
   <!-- <ion-button
     style="

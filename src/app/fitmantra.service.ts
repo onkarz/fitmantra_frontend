@@ -14,16 +14,17 @@ import { environment } from 'src/environments/environment';
 })
 export class FitmantraService {
    //localBaseUrl = 'https://fitmantraapi-production.up.railway.app';
-  localBaseUrl = 'https://fitmantra.onrender.com';
+ // localBaseUrl = 'https://fitmantra.onrender.com';
   //localBaseUrl = 'https://fitmantra-a3a5869d2287.herokuapp.com';
   signinUrl = '/api/v1/auth/login';
   signupUrl = '/api/v1/auth/signup';
   getUserByItsIdUrl = '/api/v1/users';
-  //localBaseUrl = 'http://localhost:8080';
+  localBaseUrl = 'http://localhost:8080';
   preferenceUrl = '/api/v1/preference';
   postDataSetUrl = '/api/v1/datasets';
   postOfPostURL = '/api/v1/posts';
   postDayWiseWorkoutUrl = '/api/v1/daywiseworkout'
+  getDayWiseWorkoutUrlByUserIdURL = '/api/v1/daywiseworkout/author'
   private baseUrl = 'https://api.openai.com/v1/';
   private apiKey = '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'; // Replace with your actual API key
 
@@ -129,4 +130,20 @@ export class FitmantraService {
     return this.http.post<any>(this.localBaseUrl + this.postDayWiseWorkoutUrl, data);
   }
 
+
+  getDataSetByUserID(id:any){
+    console.log(id);
+    return this.http.get<any>(
+      this.localBaseUrl + this.getDayWiseWorkoutUrlByUserIdURL + '/' + id
+    );
+
+  }
+
+
+  getDataSetByID(id:any){
+    console.log(id);
+    return this.http.get<any>(
+      this.localBaseUrl + this.postDataSetUrl + '/' + id
+    );
+  }
 }
