@@ -3,7 +3,8 @@ import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FitmantraService } from 'src/app/fitmantra.service';
-
+import { CircleProgressOptions } from 'ng-circle-progress';
+import { interval } from 'rxjs';
 @Component({
   selector: 'app-gymgoals',
   templateUrl: './gymgoals.page.html',
@@ -26,19 +27,28 @@ export class GymgoalsPage implements OnInit {
   collection: any;
   singleDayWiseWorkout: any;
   myTillWorkOut: any = [];
+  finalProgressCount: any;
+  ic: any;
+  bc: any;
+  ac: any;
+  finalAC: any;
+  finalBC: any;
+  finalIC: any;
+  progressValue: number = 50;
+  overallProgress: any;
+  completeValue : number = 0;
 
-  constructor(private fmService: FitmantraService, public router: Router) {
-    setInterval(() => {
-      this.progress += 0.01;
-
-      // Reset the progress bar when it reaches 100%
-      // to continuously show the demo
-      if (this.progress > 1) {
-        setTimeout(() => {
-          this.progress = 0;
-        }, 1000);
+  constructor(
+    private fmService: FitmantraService,
+    public router: Router,
+    public cp: CircleProgressOptions
+  ) {
+    interval(1000).subscribe(() => {
+      this.progress += 10;
+      if (this.progress >= 360) {
+        this.progress = 0;
       }
-    }, 50);
+    });
 
     this.userData = localStorage.getItem('userData');
 
@@ -53,6 +63,7 @@ export class GymgoalsPage implements OnInit {
   ngOnInit() {
     this.getAllDataSets();
     this.getDataSetsByItsUserID();
+    this.getDatafromJSONFile();
     // this.loadPreferences();
   }
 
@@ -65,30 +76,8 @@ export class GymgoalsPage implements OnInit {
   }
 
   schedule() {
-    console.log(
-      'AuthorId',
-      'DayWise Workout',
-      this.userId,
-      this.selectedValues
-    );
-
-    var DWModel = {
-      authorId: this.userId,
-      authorEmail: this.email,
-      dayWiseWorkout: this.selectedValues,
-    };
-
-    console.log(DWModel);
-
-    // localStorage.setItem('daywise', JSON.stringify(this.selectedValues));
-
-    // this.router.navigate(["/schedule"]);
-
-    this.fmService.postDayWiseWorkout(DWModel).subscribe((res: any) => {
-      console.log(res);
-    });
-
-    // this.savePreferences();
+    this.router.navigate(["/filterbylevel"]);
+   
   }
 
   getDataSetsByItsUserID() {
@@ -107,6 +96,35 @@ export class GymgoalsPage implements OnInit {
 
               this.myTillWorkOut.push(data.dataSet);
               console.log(this.myTillWorkOut);
+
+              this.ic = this.myTillWorkOut.filter(
+                (level: any) => level.level === 'intermediate'
+              );
+              console.log(this.ic);
+              this.finalIC = this.ic.length;
+              console.log('Intermediate Count :', this.finalIC);
+
+              this.bc = this.myTillWorkOut.filter(
+                (level: any) => level.level === 'beginner'
+              );
+              console.log(this.bc);
+              this.finalBC = this.bc.length;
+              console.log('Beginner Count :', this.finalBC);
+
+              this.ac = this.myTillWorkOut.filter(
+                (level: any) => level.level === 'advanced'
+              );
+              console.log(this.ac);
+              this.finalAC = this.ac.length;
+              console.log('Advanced Count :', this.finalAC);
+
+              this.overallProgress =
+                this.finalBC + this.finalIC + this.finalAC / 3;
+              console.log(this.overallProgress);
+
+              this.completeValue = this.overallProgress.toFixed(0); // Rounds to 2 decimal places
+
+              console.log(this.completeValue);
             });
         });
       });
@@ -221,5 +239,17 @@ export class GymgoalsPage implements OnInit {
 
     this.level = level;
     console.log(this.level);
+  }
+
+  getDatafromJSONFile() {
+    this.fmService.getDataFromJSON().subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
+  getProgressColor() {
+    if (this.progressValue < 100) {
+      this.progressValue += 10;
+    }
   }
 }

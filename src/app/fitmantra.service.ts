@@ -27,7 +27,7 @@ export class FitmantraService {
   getDayWiseWorkoutUrlByUserIdURL = '/api/v1/daywiseworkout/author'
   private baseUrl = 'https://api.openai.com/v1/';
   private apiKey = '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'; // Replace with your actual API key
-
+  private jsonUrl = 'assets/data.json';
   private subject = new Subject<any>();
   baseURL = 'AIzaSyAAsZrOq_c_1Y5M-uwjqXLvAu49f1LTC38';
   token =
@@ -145,5 +145,13 @@ export class FitmantraService {
     return this.http.get<any>(
       this.localBaseUrl + this.postDataSetUrl + '/' + id
     );
+  }
+
+
+  getDataFromJSON(){
+    return this.http.get<any>(
+      this.jsonUrl
+    );
+
   }
 }

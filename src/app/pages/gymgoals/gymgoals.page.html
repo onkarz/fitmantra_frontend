@@ -19,83 +19,120 @@
     </div>
   </ion-col>
 </ion-row>
-<ion-row style="background-color: black">
-  <ion-col>
-    <div style="color: white; padding: 10px">
-      <ion-select
-        (ionChange)="filterByLevel($event)"
-        label="Select Level"
-        placeholder="Beginner"
-      >
-        <ion-select-option value="beginner">Beginner</ion-select-option>
-        <ion-select-option value="intermediate">Intermediate</ion-select-option>
-        <ion-select-option value="advanced">Advanced</ion-select-option>
-      </ion-select>
-    </div>
-    <!-- <ion-item style="--background:black; color: white;">
 
-    </ion-item> -->
-  </ion-col>
-</ion-row>
-<!-- <ion-content style="--background: black; bottom: 0;">
-
-  <div class="frame" style="color: white">
-    <div class="center">
-      <div style="margin-top: 80px;" class="circle-big">
-        <div class="text">
-          1-20
-          <div class="small">Completed</div>
+<ion-content style="--background: black; bottom: 0">
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <div>
+          <circle-progress
+            [percent]="finalBC"
+            [radius]="70"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#78C009'"
+            [innerStrokeColor]="'#C7E596'"
+            [animation]="true"
+            [animationDuration]="300"
+          ></circle-progress>
         </div>
-        <svg>
-          <circle class="bg" cx="57" cy="57" r="52" />
-          <circle class="progress" cx="57" cy="57" r="52" />
-        </svg>
-      </div>
-      <div class="circles-small">
-        <div class="circle-small">
-          <div class="text">
-            On day
-            <div class="small">47</div>
-          </div>
-          <svg>
-            <circle class="bg" cx="40" cy="40" r="37" />
-            <circle class="progress one" cx="40" cy="40" r="37" />
-          </svg>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align: center">
+        <div>
+          <circle-progress
+            [percent]="finalIC"
+            [radius]="65"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#78C009'"
+            [innerStrokeColor]="'#C7E596'"
+            [animation]="true"
+            [animationDuration]="300"
+          ></circle-progress>
         </div>
-        <div class="circle-small">
-          <div style="font-size: 12px" class="text">
-            Expert level
-            <div style="font-size: 12px" class="small">Not Started</div>
-          </div>
-          <svg>
-            <circle class="bg" cx="40" cy="40" r="37" />
-            <circle class="progress two" cx="40" cy="40" r="37" />
-          </svg>
+      </ion-col>
+      <ion-col style="text-align: center">
+        <div>
+          <circle-progress
+            [percent]="finalAC"
+            [radius]="65"
+            [outerStrokeWidth]="16"
+            [innerStrokeWidth]="8"
+            [outerStrokeColor]="'#78C000'"
+            [innerStrokeColor]="'#C7E596'"
+            [animation]="true"
+            [animationDuration]="300"
+          ></circle-progress>
         </div>
-      </div>
+      </ion-col>
+    </ion-row>
 
-      <div style="margin-top: 30px" class="headline">
-        <div class="small">your overall</div>
-        progress
-      </div>
+    <ion-row style="margin-top: 20px; text-align: center">
+      <ion-col>
+        <h4 style="color: white; font-weight: bold;" id="progress">Your overall progress</h4>
+        <ion-progress-bar  color="tertiary" [value]="completeValue/100"></ion-progress-bar>
+        <ion-label
+          style="
+            text-align: center;
+            margin-top: 8px;
+            font-size: 18px;
+            color: #925EFF;
+          "
+          class="progress-label"
+          >{{ completeValue }}% Progress</ion-label
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div style="text-align: center">
+    <ion-button
+      style="
+        color: black;
+        --background: #6aff70;
+        margin-top: 110px;
+        width: 350px;
+        font-weight: bold;
+      "
+      id="open-custom-dialog"
 
-      <div
-        style="
-          padding-right: 40px;
-          padding-left: 40px;
-          margin-top: 20px;
-          margin-bottom: -50px;
-        "
-      >
-        <ion-progress-bar [value]="progress"></ion-progress-bar>
-      </div>
-    </div>
+      >Show progress in details</ion-button
+    >
 
-    <div></div>
+    <ion-button
+
+      (click)="schedule()"
+      style="
+        color: black;
+        --background: #6aff70;
+        margin-top: 10px;
+        width: 350px;
+
+        font-weight: bold;
+      "
+      >Schedule
+    </ion-button>
   </div>
-</ion-content> -->
 
-<ion-content>
+  <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+    <ng-template>
+      <div style="overflow: scroll" class="wrapper">
+        <div>
+          <h1>Workout done by you</h1>
+        </div>
+
+        <ion-list style="color: black">
+          <ion-item *ngFor="let item of myTillWorkOut">
+            <ion-label style="color: black"> {{item.title}} </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<!-- <ion-content>
   <div style="overflow: scroll; background-color: black; color: white">
     <ion-list style="--background: black">
       <ion-item
@@ -126,47 +163,31 @@
           </ion-row>
         </ion-grid>
 
-        <!-- <ion-badge (click)="update(data._id)">Update</ion-badge> -->
       </ion-item>
     </ion-list>
   </div>
 
 
   <ion-list style="color: black;">
-    <p>hey</p>
+    <h2 style="padding: 10px;">Workout done by you</h2>
     <ion-item *ngFor="let item of myTillWorkOut">
       <ion-label style="color: black;"> {{item.title}} </ion-label>
+
     </ion-item>
   </ion-list>
-</ion-content>
-<ion-footer style="text-align: center; background: black">
+</ion-content> -->
+
+<!-- <ion-footer style="text-align: center; background: black">
   <ion-button
     (click)="schedule()"
     style="
       color: black;
       --background: #6aff70;
       margin-top: 10px;
-      width: 120px;
+      width: auto;
       margin-bottom: 20px;
       font-weight: bold;
     "
     >Schedule
   </ion-button>
-
-
-  <!-- <ion-button
-    style="
-      color: black;
-      --background: #6aff70;
-      margin-top: 10px;
-      width: 120px;
-      margin-bottom: 20px;
-      font-weight: bold;
-    "
-    ion-button
-    margin-right
-    (click)="refresh()"
-  >
-    Refresh
-  </ion-button> -->
-</ion-footer>
+</ion-footer> -->

@@ -16,6 +16,7 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +27,15 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
   ],
   exports: [],
   providers: [

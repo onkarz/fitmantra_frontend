@@ -13,15 +13,15 @@ export class AppComponent {
   userData: any;
   constructor(private ionStorage: IonicStorageService, private router: Router) {
 
-    // this.userData = localStorage.getItem('userData');
-    // console.log(this.userData);
-    // var userDetails = JSON.parse(this.userData);
-    // console.log(userDetails);
-    // if (this.userData != null) {
-    //   this.router.navigate(['/tabs/tab3']);
-    // } else {
-    //   this.router.navigate(['/splash']);   
-    // }
+    this.userData = localStorage.getItem('userData');
+    console.log(this.userData);
+    var userDetails = JSON.parse(this.userData);
+    console.log(userDetails);
+    if (this.userData != null) {
+      this.router.navigate(['/tabs/tab3']);
+    } else {
+      this.router.navigate(['/splash']);
+    }
 
   }
 }

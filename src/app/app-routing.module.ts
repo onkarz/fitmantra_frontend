@@ -86,6 +86,10 @@ const routes: Routes = [
     path: 'tfmodel',
     loadChildren: () => import('./pages/tfmodel/tfmodel.module').then( m => m.TfmodelPageModule)
   },
+  {
+    path: 'filterbylevel',
+    loadChildren: () => import('./pages/filterbylevel/filterbylevel.module').then( m => m.FilterbylevelPageModule)
+  },
 ];
 @NgModule({
   imports: [

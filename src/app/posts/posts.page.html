@@ -28,9 +28,7 @@
   <div style="color: white;" class="nft"  *ngFor="let post of allPosts">
     <div class="main">
       <div  class="creator" style="margin-bottom: 20px">
-        <div class="wrapper">
-        Author -
-        </div>
+
         <p>
           {{post.authorName}}
         </p>
@@ -61,6 +59,8 @@
           <ins>◘</ins>
           <p>{{post.authorEmail}}</p>
         </div>
+        <br>
+        
         <div class="duration">
           <ins>◷</ins>
           <p>{{post.updatedAt}}</p>

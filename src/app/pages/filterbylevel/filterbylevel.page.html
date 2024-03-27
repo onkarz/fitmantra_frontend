@@ -1,0 +1,95 @@
+<ion-content>
+  <ion-row style="margin-top: 0px; background-color: black">
+    <ion-col>
+      <div>
+        <div class="heading">
+          <span style="color: white; font-family: nova flat"
+            >Fit<span style="color: #ff7008">Forma</span></span
+          >
+        </div>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div style="text-align: right; padding: 20px; font-size: 30px">
+        <ion-icon
+          style="color: white"
+          routerLink="/tabs/tab1"
+          name="home-outline"
+        ></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row style="background-color: black">
+    <ion-col>
+      <div style="color: white; padding: 10px">
+        <ion-select
+          (ionChange)="filterByLevel($event)"
+          label="Select Level"
+          placeholder="Beginner"
+        >
+          <ion-select-option value="beginner">Beginner</ion-select-option>
+          <ion-select-option value="intermediate"
+            >Intermediate</ion-select-option
+          >
+          <ion-select-option value="advanced">Advanced</ion-select-option>
+        </ion-select>
+      </div>
+      <!-- <ion-item style="--background:black; color: white;">
+
+      </ion-item> -->
+    </ion-col>
+  </ion-row>
+  <div style="padding: 20px; margin-top: 120px;">
+    <h2 style="color: white" *ngIf="!showLevelStatus">
+      Please select level as per your progress !!!
+    </h2>
+  </div>
+
+  <div style="overflow: scroll; background-color: black; color: white">
+    <ion-list style="--background: black">
+      <ion-item
+        style="--background: black; color: white"
+        *ngFor="let data of filteredLevels; let i = index"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <div>
+                <ion-checkbox
+                  [(ngModel)]="data.checked"
+                  (ionChange)="updateSelectedValues(data)"
+                ></ion-checkbox>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-label style="color: white">
+                  <h3 style="color: white">Title - {{data.title}}</h3>
+                  <p style="color: white; text-wrap: wrap">
+                    Description - {{data.description}}
+                  </p>
+                  <p style="color: white">{{data.level}}</p>
+                </ion-label>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer style="text-align: center; background: black">
+  <ion-button
+    (click)="schedule()"
+    style="
+      color: black;
+      --background: #6aff70;
+      margin-top: 10px;
+      width: 120px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    "
+    >Schedule
+  </ion-button>
+</ion-footer>
